@@ -60,21 +60,23 @@
 }
 
 [type='button'] {
-  color: #ffffff;
+  border-radius: 8px;
+  background: #4e75ff;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
   font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  width: 75px;
-  height: 40px;
-  border-radius: 8px;
-  border: none;
-  background: #cfcfcf;
+  border-color: transparent;
 }
 [type='button']:hover {
   background: #6c8cff;
+  color: #fff;
 }
 
 [type='button']:active {
@@ -140,6 +142,9 @@
 }
 
 /* ---------Snackbar----------- */
+.container-snackbar {
+  padding: 36px 36px 36px 156px;
+}
 .form {
   width: 360px;
   display: flex;
