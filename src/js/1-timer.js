@@ -16,9 +16,8 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    // console.log(selectedDates[0]);
-    // userSelectedDate = selectedDates[0];
-    if (userSelectedDate < new Date()) {
+    const selectedDate = selectedDates[0];
+    if (selectedDates < new Date()) {
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
@@ -51,7 +50,11 @@ startBtn.addEventListener('click', () => {
       clearInterval(timerInterval);
       startBtn.removeAttribute('disabled', '');
       startBtn.setAttribute('disabled', '');
-      // iziToast.success({ title: "Success", message: "Countdown finished!", position: "topRight" });
+      iziToast.success({
+        title: 'Success',
+        message: 'Countdown finished!',
+        position: 'topRight',
+      });
     } else {
       redactedTime(diferenceTime);
     }
