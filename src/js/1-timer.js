@@ -7,8 +7,8 @@ import 'izitoast/dist/css/iziToast.min.css';
 const startBtn = document.querySelector('button[data-start]');
 const dateInput = document.querySelector('#datetime-picker');
 
-let userSelectedDate = null;
-let timerInterval = null;
+let userSelectedDate;
+startBtn.disabled = true;
 
 const options = {
   enableTime: true,
@@ -16,8 +16,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    const selectedDate = selectedDates[0];
-    if (selectedDates < new Date()) {
+    if (selectedDates[0].getTime() < Date.now()) {
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
@@ -25,16 +24,16 @@ const options = {
         color: 'red',
       });
       startBtn.disabled = true;
+      return;
     } else {
       startBtn.disabled = false;
       userSelectedDate = selectedDates[0].getTime();
     }
   },
 };
+flatpickr(dateInput, options);
 
-flatpickr('#datetime-picker', options);
-
-startBtn.addEventListener('click', () => {
+startBtn.addEventListener('click', timerInterval => {
   if (timerInterval) {
     clearInterval(timerInterval);
   }
